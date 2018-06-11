@@ -1,0 +1,29 @@
+<div class="starter-template">
+  <p class="lead">Newsfeed</p>
+</div>
+
+<div class="col-md-6 col-md-offset-3">
+  <form id="sendPost">
+    <input type="text" class="form-control" id="post">
+    <br />
+    <button class="btn btn-primary">Post</button>
+  </form>
+
+  <br />
+  <br />
+
+  <div id="posts">
+    {{#each posts}}
+    <div class="media">
+      <div class="media-left">
+        <a href="/user/{{ owner._id }}"><img class="media-object" src="{{ owner.photo }}" /></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ owner.name }}</h4>
+        <p>{{ content }}</p>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+</div>

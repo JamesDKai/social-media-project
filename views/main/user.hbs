@@ -1,0 +1,93 @@
+
+<div class="col-md-6 col-md-offset-3">
+
+<div class="starter-template">
+  <h2>{{ foundUser.name }}</h2>
+  <img class="photo-size" src="{{ foundUser.photo }}" />
+  <br />
+  <br />
+  {{#if currentUser }}
+
+  {{ else }}
+  <input type="hidden" id="user_id" value="{{ foundUser._id }}" />
+  {{#if follower }}
+  <p><button class="btn btn-primary" id="unconnect">Connected</button></p>
+  {{ else }}
+  <p><button class="btn btn-default" id="connect">Connect</button></p>
+  {{/if }}
+  {{/if }}
+</div>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-12"><h3>Instagram Example</h3></div>
+    </div>
+  <div class="row flex">
+      <div class="col-md-6">
+        <div class="row" id="grid">
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>  
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div> 
+            <div class="col-md-4"><img src="//placehold.it/200x140" class="img-thumbnail img-responsive"></div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+<br/>
+<br/>
+
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#home">Posts</a></li>
+  <li><a data-toggle="tab" href="#menu1">Following</a></li>
+  <li><a data-toggle="tab" href="#menu2">Followers</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="home" class="tab-pane fade in active">
+    {{#each posts}}
+    <div class="media">
+      <div class="media-left">
+        <a href="#"><img class="media-object" src="{{ owner.photo }}" /></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ owner.name }}</h4>
+        <p>{{ content }}</p>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+  <div id="menu1" class="tab-pane fade">
+    {{#each foundUser.following }}
+    <div class="media">
+      <div class="media-left">
+        <a href="#"><img class="media-object" src="{{ photo }}" /></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ name }}</h4>
+      </div>
+    </div>
+    {{/each}}
+
+  </div>
+  <div id="menu2" class="tab-pane fade">
+    {{#each foundUser.followers }}
+    <div class="media">
+      <div class="media-left">
+        <a href="#"><img class="media-object" src="{{ photo }}" /></a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">{{ name }}</h4>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
